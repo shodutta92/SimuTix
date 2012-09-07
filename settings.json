@@ -1,0 +1,11 @@
+{   
+    "info": {
+        "name":   "Sanketh Katta",
+        "team":   "Sigmasters"  
+    }
+    "sigma": {
+        "model": "sigma/carwash.c",    
+        "parameters": ["QUEUE", "SERVER"] 
+    }
+}
+     
