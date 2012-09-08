@@ -4,7 +4,7 @@
 % include head data={"info": info}
 
 <body> 
-    % include navbar data={"info": info, "__extra": __extra}
+    % include navbar data={"info": info, "__simulate": "active", "__results": ""}
 
     <div class="container">
         <div class="row">
@@ -18,17 +18,22 @@
             <div class="span6">
                 <form class="form-horizontal" action="/" method="post">
 
-                    % for idx in range(len(sigma['parameters'])):
+                    % for param in sigma['parameters']:
                      <div class="control-group">
-                         <label class="control-label">{{ sigma['friendly'][idx] }}</label>
+                         <label class="control-label">{{ param['display'] }}</label>
                          <div class="controls">
-                            <input type="text" name="{{ sigma['parameters'][idx] }}" value="{{ sigma['defaults'][idx] }}">
+                            <input type="text" name="{{ param['name'] }}" value="{{ param['default'] }}">
                          </div>
                      </div>
                      % end
 
                     <input class="btn btn-large btn-block btn-primary" type="input" value="Run Simulation">
                 </form>
+            </div>
+            <div class="span6">
+                <div class="well">
+                    <p> LOREM IPSUM DOLOR </p>
+                </div>
             </div>
         </div>
    </div>

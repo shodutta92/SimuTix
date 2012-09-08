@@ -4,7 +4,7 @@
 % include head data={"info": info}
 
 <body> 
-    % include navbar data={"info": info, "__extra": __extra}
+    % include navbar data={"info": info, "__simulate": "", "__results": ""}
 
     <div class="container">
         <div class="row">
@@ -12,7 +12,8 @@
                 <div class="hero-unit">
                 <h1>Welcome to {{ info['team'] }}!</h1>
                 <p>{{ info['description'] }}</p>
-                 <p> <a href="/simulate" class="btn btn-primary btn-large">Let's Get Started</a> </p>
+                <p>By {{ info['members'] }}</p>
+                <p> <a href="/simulate" class="btn btn-primary btn-large">Let's Get Started</a> </p>
                 </div>
             </div>
         </div>

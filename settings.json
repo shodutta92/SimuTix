@@ -1,17 +1,43 @@
 {   
     "info": {
-        "name":   "Sanketh Katta",
         "team":   "Carwash Demo",
+        "members":   "Sanketh, Soroush, Pranava, and Nathan",
         "description":  
             "This is a simulation demo of the classic Carwash model. I hope you enjoy!"
     },
 
     "sigma": {
         "model": "sigma/carwash.c",    
-        "parameters": ["QUEUE", "SERVER"],
-        "friendly": ["Initial Queue", "Number of Washers"],
-        "defaults": [0, 4]
+        "parameters": [
+            {   "name": "QUEUE",
+                "display": "Initial Queue",
+                "default": 0
+            },
+
+            {   "name": "SERVER",
+                "display": "Number of Washers",
+                "default": 4
+            },
+
+            {   "name": "RUNTIME",
+                "display": "Running Time",
+                "default": 1000
+            }
+        ]
     },
+
+    "graphs": [
+        {   "name": "Queue vs Time",
+            "x-axis": "TIME",
+            "y-axis": "QUEUE"
+        },
+
+        {   "name": "Server vs Time",
+            "x-axis": "TIME",
+            "y-axis": "SERVER"
+        }
+
+    ],
 
     "server": {
         "hostname": "localhost",

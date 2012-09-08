@@ -9,19 +9,16 @@ settings = json.load(open('settings.json'))
 # Home Page
 @get('/')
 def index():  
-    settings['__extra'] = {'simulate': "", 'results': ""}
     return template("index", settings)
 
 # Simulate Page
 @get('/simulate')
 def simulate():  
-    settings['__extra'] = {'simulate': "active", 'results': ""}
     return template("simulate", settings)
 
 # Results Page
 @get('/results')
 def simulate():  
-    settings['__extra'] = {'simulate': "", 'results': "active"}
     return template("results", settings)
 
 # Error 404 (when page is not found)
