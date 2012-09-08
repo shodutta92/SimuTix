@@ -3,14 +3,19 @@
         "name":   "Sanketh Katta",
         "team":   "Carwash Demo",
         "description":  
-            " This is a simulation demo of the classic Carwash model. I hope you enjoy!"
+            "This is a simulation demo of the classic Carwash model. I hope you enjoy!"
     },
 
     "sigma": {
         "model": "sigma/carwash.c",    
         "parameters": ["QUEUE", "SERVER"],
         "friendly": ["Initial Queue", "Number of Washers"],
-        "defaults": ["0", "4"]
+        "defaults": [0, 4]
+    },
+
+    "server": {
+        "hostname": "localhost",
+        "port": 9000
     }
 }
      

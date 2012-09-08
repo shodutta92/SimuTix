@@ -6,17 +6,19 @@ from sigma.app import *
 # Import Settings Into a Dictionary 
 settings = json.load(open('settings.json'))
 
-# Main Page
+# Home Page
 @get('/')
 def index():  
     settings['__extra'] = {'simulate': "", 'results': ""}
     return template("index", settings)
 
+# Simulate Page
 @get('/simulate')
 def simulate():  
     settings['__extra'] = {'simulate': "active", 'results': ""}
     return template("simulate", settings)
 
+# Results Page
 @get('/results')
 def simulate():  
     settings['__extra'] = {'simulate': "", 'results': "active"}
@@ -47,4 +49,4 @@ def fonts(filename):
 # Custom Template Path and Run Server with Debug on
 TEMPLATE_PATH.insert(0, "./templates/")
 debug(True)
-run(host='localhost', port=9000, reloader=True)
+run(host=settings['server']['hostname'], port=settings['server']['port'], reloader=True)
