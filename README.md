@@ -13,4 +13,6 @@ Settings
 ---------
     - The "settings.json" file holds all your custom variable Settings
     - Each time the server starts, it will read your file and use them throughout
+    - The order of sigma.parameters is **very** important
+        - It **must** match the order of the parameters in your Sigma model
     

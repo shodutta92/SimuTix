@@ -1,11 +1,14 @@
 {   
     "info": {
         "name":   "Sanketh Katta",
-        "team":   "Sigmasters"  
-    }
+        "team":   "Carwash Demo"
+    },
+
     "sigma": {
         "model": "sigma/carwash.c",    
-        "parameters": ["QUEUE", "SERVER"] 
+        "parameters": ["QUEUE", "SERVER"],
+        "friendly": ["Initial Queue", "Number of Washers"],
+        "defaults": ["0", "4"]
     }
 }
      

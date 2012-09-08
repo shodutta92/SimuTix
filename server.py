@@ -1,5 +1,7 @@
 from bottle import *
 import json
+import sigma.parser as parser
+from sigma.app import *
 
 # Import Settings Into a Dictionary
 settings = json.load(open('settings.json'))
@@ -7,9 +9,9 @@ settings = json.load(open('settings.json'))
 # Main Page
 @get('/')
 def index():  
-    return template("templates/index.html", settings)
+    return template("index", settings)
 
-# Error 404
+# Error 404 (when page is not found"
 @error(404)
 def error404(error):
     return "Sorry, can't find that page!"
@@ -32,5 +34,7 @@ def fonts(filename):
     return static_file(filename, root='static/fonts')
   
 
+# Custom Template Path and Run Server with Debug on
+TEMPLATE_PATH.insert(0, "./templates/")
 debug(True)
 run(host='localhost', port=9000, reloader=True)

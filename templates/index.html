@@ -1,10 +1,51 @@
 <!doctype HTML> 
 <html dir="ltr" lang="en-US"> 
 <head> 
+<!-- SigmaWeb By Sanketh Katta --> 
+	<meta charset="utf-8" /> 
+
+	<!-- Stylesheets --> 
+	<link rel="stylesheet" type="text/css" href="bootstrap.min.css"/> 
+	<link rel="stylesheet" type="text/css" href="sigmaweb.css"/> 
+
+	<!-- JavaScripts --> 
+	<script type="text/javascript" src="jquery-1.8.1.min.js"></script> 
+
 	<title>{{ info['team'] }}</title> 
 </head> 
 <body> 
-    <h1>{{ info['team'] }}     
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="brand" href="/">{{ info['team'] }}</a>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <div class="page-header">
+                    <h1>Simulate. <small>customize your parameters<small></h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span6">
+                <form class="form-horizontal" action="/" method="post">
+
+                    % for idx in range(len(sigma['parameters'])):
+                     <div class="control-group">
+                         <label class="control-label">{{ sigma['friendly'][idx] }}</label>
+                         <div class="controls">
+                            <input type="text" name="{{ sigma['parameters'][idx] }}" value="{{ sigma['defaults'][idx] }}">
+                         </div>
+                     </div>
+                     % end
+                    <input class="btn btn-large btn-block btn-primary" type="input" value="Run Simulation">
+                </form>
+            </div>
+        </div>
+   </div>
 </body> 
 </html> 
  
