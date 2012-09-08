@@ -3,15 +3,26 @@ import json
 import sigma.parser as parser
 from sigma.app import *
 
-# Import Settings Into a Dictionary
+# Import Settings Into a Dictionary 
 settings = json.load(open('settings.json'))
 
 # Main Page
 @get('/')
 def index():  
+    settings['__extra'] = {'simulate': "", 'results': ""}
     return template("index", settings)
 
-# Error 404 (when page is not found"
+@get('/simulate')
+def simulate():  
+    settings['__extra'] = {'simulate': "active", 'results': ""}
+    return template("simulate", settings)
+
+@get('/results')
+def simulate():  
+    settings['__extra'] = {'simulate': "", 'results': "active"}
+    return template("results", settings)
+
+# Error 404 (when page is not found)
 @error(404)
 def error404(error):
     return "Sorry, can't find that page!"
@@ -33,7 +44,6 @@ def images(filename):
 def fonts(filename):
     return static_file(filename, root='static/fonts')
   
-
 # Custom Template Path and Run Server with Debug on
 TEMPLATE_PATH.insert(0, "./templates/")
 debug(True)

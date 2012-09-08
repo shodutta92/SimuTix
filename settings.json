@@ -1,7 +1,9 @@
 {   
     "info": {
         "name":   "Sanketh Katta",
-        "team":   "Carwash Demo"
+        "team":   "Carwash Demo",
+        "description":  
+            " This is a simulation demo of the classic Carwash model. I hope you enjoy!"
     },
 
     "sigma": {

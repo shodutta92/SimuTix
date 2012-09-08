@@ -1,0 +1,37 @@
+<!doctype HTML> 
+<html dir="ltr" lang="en-US"> 
+
+% include head data={"info": info}
+
+<body> 
+    % include navbar data={"info": info, "__extra": __extra}
+
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <div class="page-header">
+                    <h1>Simulate. <small>customize your parameters<small></h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span6">
+                <form class="form-horizontal" action="/" method="post">
+
+                    % for idx in range(len(sigma['parameters'])):
+                     <div class="control-group">
+                         <label class="control-label">{{ sigma['friendly'][idx] }}</label>
+                         <div class="controls">
+                            <input type="text" name="{{ sigma['parameters'][idx] }}" value="{{ sigma['defaults'][idx] }}">
+                         </div>
+                     </div>
+                     % end
+
+                    <input class="btn btn-large btn-block btn-primary" type="input" value="Run Simulation">
+                </form>
+            </div>
+        </div>
+   </div>
+</body> 
+</html> 
+ 
