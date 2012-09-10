@@ -1,6 +1,5 @@
 from bottle import *
 import json
-import sigma.parser as parser
 from sigma.app import *
 
 # Import Settings Into a Dictionary 
