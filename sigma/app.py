@@ -1,11 +1,21 @@
 from stats import *
 from parser import *
+from time import time
+from random import randint
 
-def exp_dat_write(vars):
+def exp_write(vars, params):
     """
     Takes in the variables to be written as a list with their values
     Returns the unique filename (current epoch time)
     """
+    fname = int(time())
+    randomseed = random.randint(0, 65534)
+
+    expfile = open(fname+'.exp', 'w')
+
+    outfile = fname+'.out'
+
+
     return 0
 
 def run_simulation(POST, graphs):
