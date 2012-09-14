@@ -8,66 +8,20 @@ SigmaWeb is a simple framework for easily and quickly creating web interfaces fo
 - Each time the server starts, it will read your file and use them throughout
 
 ###info
-    info: {
-        "team": "",
-        "members": "",
-        "description: "",
-    }
+    "info": {
+        "team":   "Carwash Demo",
+        "members":   "Sanketh, Soroush, Pranava, and Nathan",
+        "description":  
+            "This is a simulation demo of the classic Carwash model. I hope you enjoy!"
+    },
+
+- `team` is your Project or Team name
+- `members` can be a comma sperated list of the team members
+- 'description' is a tagline description of the product
 
 
 
 
-
-
-- Example settings.json:
-    {   
-        "info": {
-            "team":   "Carwash Demo",
-            "members":   "Sanketh, Soroush, Pranava, and Nathan", 
-            "description":  
-                "This is a simulation demo of the classic Carwash model. I hope you enjoy!" 
-        },
-
-        "sigma": {
-            "model": "sigma/carwash.exe",    
-            "dat": "",
-            "parameters": [
-                {   "name": "QUEUE",
-                    "display": "Initial Queue",
-                    "default": 0
-                },
-
-                {   "name": "SERVER",
-                    "display": "Number of Washers",
-                    "default": 4
-                },
-
-                {   "name": "RUNTIME",
-                    "display": "Running Time",
-                    "default": 1000
-                }
-            ]
-        },
-
-        "graphs": [
-            {   "name": "Queue vs Time",
-                "x-axis": "TIME",
-                "y-axis": "QUEUE"
-            },
-
-            {   "name": "Server vs Time",
-                "x-axis": "TIME",
-                "y-axis": "SERVER"
-            }
-
-        ],
-
-        "server": {
-            "hostname": "localhost",
-            "port": 9000
-        }
-    }
-     
 - The order of sigma.parameters is **very** important
     - It **must** match the order of the parameters in your Sigma model
 - If the server is throwing a Key Error, you likely have a mismatch between a parameter in your settings.json and the Variables in your sigma model. Go back to sigma and make sure all parameters are defined.
