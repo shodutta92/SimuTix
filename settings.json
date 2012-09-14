@@ -31,14 +31,14 @@
         {   "name": "Queue vs Time",
             "x-axis": "TIME",
             "x-display": "Time (seconds)",
-            "y-axis": "QUEUE"
+            "y-axis": "QUEUE",
             "y-display": "Number in Queue"
         },
 
         {   "name": "Server vs Time",
             "x-axis": "TIME",
             "x-display": "Time (seconds)",
-            "y-axis": "SERVER"
+            "y-axis": "SERVER",
             "y-display": "Servers Available"
         }
     ],

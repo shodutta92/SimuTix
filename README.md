@@ -57,14 +57,14 @@ Item in the `parameter` list:
         {   "name": "Queue vs Time",
             "x-axis": "TIME",
             "x-display": "Time (seconds)",
-            "y-axis": "QUEUE"
+            "y-axis": "QUEUE",
             "y-display": "Number in Queue"
         },
 
         {   "name": "Server vs Time",
             "x-axis": "TIME",
             "x-display": "Time (seconds)",
-            "y-axis": "SERVER"
+            "y-axis": "SERVER",
             "y-display": "Servers Available"
         }
 
@@ -89,3 +89,5 @@ Item in the `graph` list:
 
 ## Debugging
 - If the server is throwing a Key Value Error, you likely have a mismatch between a parameter in your settings.json and the Variables in your sigma model. Go back to sigma and make sure all parameters are defined.
+
+- If you are getting a JSON Decode error, you likely have incorrect formatting in your `settings.json` file. Compare it to the default included file and look for errors, like missing commas. You can also copy and paste the file into a [JSON validator](http://jsonlint.com/) which will help you find errors.
