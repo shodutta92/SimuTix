@@ -5,6 +5,9 @@ SigmaWeb is a simple framework for easily and quickly creating web interfaces fo
 It is built as a self-contained package which requires only a default python installation to run. 
 SigmaWeb was built for use in IEOR 131: Discrete Event Simulation, taught at U.C. Berkeley.
 
+##Preparation
+- In order to use SigmaWeb, you must first prepare your sigma model to be compatible.
+
 ##Settings
 - The `settings.json` file holds all your custom variable settings
 - Each time the server starts, it will read your file and use them throughout
@@ -70,6 +73,7 @@ Item in the `parameter` list:
 
     ],
 - `graphs` is a list of graphs objects to be displayed after the simulation completes. The order signifies the display order of the graph on the results page.
+
 Item in the `graph` list:
 - `name` is the title that appears above the graph
 - `x-axis` is the sigma variable to be used on the x-axis
@@ -89,5 +93,4 @@ Item in the `graph` list:
 
 ## Debugging
 - If the server is throwing a Key Value Error, you likely have a mismatch between a parameter in your settings.json and the Variables in your sigma model. Go back to sigma and make sure all parameters are defined.
-
 - If you are getting a JSON Decode error, you likely have incorrect formatting in your `settings.json` file. Compare it to the default included file and look for errors, like missing commas. You can also copy and paste the file into a [JSON validator](http://jsonlint.com/) which will help you find errors.
