@@ -26,4 +26,6 @@ def run_simulation(POST, graphs):
     Will throw a key error if defined graph variable in settings.json
     does not exist in the sigma trace output
     """
+    exp_write(POST, params)
+        
     return 0
