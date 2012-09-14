@@ -7,12 +7,25 @@ SigmaWeb is a simple framework for easily and quickly creating web interfaces fo
 - The "settings.json" file holds all your custom variable Settings
 - Each time the server starts, it will read your file and use them throughout
 
+###info
+    info: {
+        "team": "",
+        "members": "",
+        "description: "",
+    }
+
+
+
+
+
+
+- Example settings.json:
     {   
         "info": {
-            "team":   "Carwash Demo", // Project Name
-            "members":   "Sanketh, Soroush, Pranava, and Nathan", // Project Group Members
+            "team":   "Carwash Demo",
+            "members":   "Sanketh, Soroush, Pranava, and Nathan", 
             "description":  
-                "This is a simulation demo of the classic Carwash model. I hope you enjoy!" // A short Description
+                "This is a simulation demo of the classic Carwash model. I hope you enjoy!" 
         },
 
         "sigma": {
@@ -55,9 +68,6 @@ SigmaWeb is a simple framework for easily and quickly creating web interfaces fo
         }
     }
      
-
-
-
 - The order of sigma.parameters is **very** important
     - It **must** match the order of the parameters in your Sigma model
 - If the server is throwing a Key Error, you likely have a mismatch between a parameter in your settings.json and the Variables in your sigma model. Go back to sigma and make sure all parameters are defined.
