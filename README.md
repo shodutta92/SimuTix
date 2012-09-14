@@ -17,9 +17,37 @@ SigmaWeb is a simple framework for easily and quickly creating web interfaces fo
 
 - `team` is your Project or Team name
 - `members` can be a comma sperated list of the team members
-- 'description' is a tagline description of the product
+- `description` is a tagline description of the product
 
+###sigma
+    "sigma": {
+        "model": "sigma/carwash.exe",    
+        "dat": "",
+        "parameters": [
+            {   "name": "QUEUE",
+                "display": "Initial Queue",
+                "default": 0
+            },
 
+            {   "name": "SERVER",
+                "display": "Number of Washers",
+                "default": 4
+            },
+
+            {   "name": "RUNTIME",
+                "display": "Running Time",
+                "default": 1000
+            }
+        ]
+    },
+- `model` should be the path to your compiled model, see Preparation on how to create that file.
+- `dat` is an optional parameter, if you used `DISK` commands in sigma to read from a `.dat` file, provide the path to the file.
+- `parameters` is a list of parameter objects, the order of this list is **very** important! The order of the parameters must match the order in your sigma model, otherwise the model will break.
+
+Element in the `parameter` list:
+- `name` is the actual parameter name, for consistency, please use the same names you defined in your sigma model.
+- `display` is the friendly version of the variable name, this is what will appear in simulation form, it should be something descriptive and easy to understand.
+- `default` is the default value the form should begin at. When there get to be lots of parameters, it will be very cumbersome to enter in each one every time. Instead we can begin with a default value.
 
 
 - The order of sigma.parameters is **very** important
