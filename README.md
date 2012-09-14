@@ -14,13 +14,14 @@ SigmaWeb was built for use in IEOR 131: Discrete Event Simulation, taught at U.C
 
 ### Components:
 ###info
+    ```javascript
     "info": {
         "team":   "Carwash Demo",
         "members":   "Sanketh, Soroush, Pranava, and Nathan",
         "description":  
             "This is a simulation demo of the classic Carwash model. I hope you enjoy!"
     },
-
+    ```
 - `team` is your Project or Team name
 - `members` can be a comma sperated list of the team members
 - `description` is a tagline description of the product
