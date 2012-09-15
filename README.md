@@ -1,9 +1,9 @@
 #SigmaWeb IEOR 131
 
 ##What is this?
-> SigmaWeb is a simple framework for easily and quickly creating web interfaces for the Sigma simulation software. 
-> It is built as a self-contained package which requires only a default python installation to run. 
-> SigmaWeb was built for use in IEOR 131: Discrete Event Simulation, taught at U.C. Berkeley.
+SigmaWeb is a simple framework for easily and quickly creating web interfaces for the Sigma simulation software. 
+It is built as a self-contained package which requires only a default python installation to run. 
+SigmaWeb was built for use in IEOR 131: Discrete Event Simulation, taught at U.C. Berkeley.
 
 ##Preparation
 - In order to use SigmaWeb, you must first prepare your sigma model to be compatible.
