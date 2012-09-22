@@ -30,7 +30,6 @@ SigmaWeb was built for use in IEOR 131: Discrete Event Simulation, taught at U.C
 ```javascript
 "sigma": {
     "model": "sigma/carwash.exe",    
-    "dat": "",
     "parameters": [
         {   "name": "QUEUE",
             "display": "Initial Queue",
@@ -50,7 +49,6 @@ SigmaWeb was built for use in IEOR 131: Discrete Event Simulation, taught at U.C
 }
 ```
 - `model` should be the path to your compiled model, see Preparation on how to create that file.
-- `dat` is an optional parameter, if you used `DISK` commands in sigma to read from a `.dat` file, provide the path to the file.
 - `parameters` is a list of parameter objects, the order of this list is **very** important! The order of the parameters must match the order in your sigma model, otherwise the model will break.
 
 Item in the `parameter` list:
@@ -95,7 +93,7 @@ Item in the `graph` list:
 ```
 
 - `server` are advanced settings for running the server. If you are unsure what to do here, leave the default values, you should not have a problem.
-- `hostname` is the ip address or host for the server to run only
+- `hostname` is the ip address or host for the server to run on
 - `port` is the port number
 
 ## Debugging

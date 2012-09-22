@@ -8,7 +8,6 @@
 
     "sigma": {
         "model": "sigma/carwash.exe",    
-        "dat": "",
         "parameters": [
             {   "name": "QUEUE",
                 "display": "Initial Queue",

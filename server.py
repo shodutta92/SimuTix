@@ -1,6 +1,6 @@
 from bottle import *
 import json
-from sigma.app import *
+#from sigma.app import *
 
 # Import Settings Into a Dictionary 
 settings = json.load(open('settings.json'))
