@@ -1,24 +1,22 @@
 from bottle import *
-import json
+import settings
 #from sigma.app import *
-
-# Import Settings Into a Dictionary 
-settings = json.load(open('settings.json'))
 
 # Home Page
 @get('/')
 def index():  
-    return template("index", settings)
+    return template("index", {"info": settings.info})
 
 # Simulate Page
 @get('/simulate')
 def simulate():  
-    return template("simulate", settings)
+    return template("simulate", {"info": settings.info, 
+                                 "sigma": settings.sigma})
 
 # Results Page
 @get('/results')
 def simulate():  
-    return template("results", settings)
+    return template("results", {"info": settings.info})
 
 # Error 404 (when page is not found)
 @error(404)
@@ -45,4 +43,4 @@ def fonts(filename):
 # Custom Template Path and Run Server with Debug on
 TEMPLATE_PATH.insert(0, "./templates/")
 debug(True)
-run(host=settings['server']['hostname'], port=settings['server']['port'], reloader=True)
+run(host=settings.server['hostname'], port=settings.server['port'], reloader=True)

@@ -14,12 +14,13 @@ SigmaWeb was built for use in IEOR 131: Discrete Event Simulation, taught at U.C
 
 ### Components:
 ###info
-```javascript
-"info": {
+```python
+info = {
     "team":   "Carwash Demo",
     "members":   "Sanketh, Soroush, Pranava, and Nathan",
     "description":  
-        "This is a simulation demo of the classic Carwash model. I hope you enjoy!"
+        """This is a simulation demo of the classic Carwash model. 
+           I hope you enjoy!"""
 }
 ```
 - `team` is your project or team name
@@ -27,8 +28,8 @@ SigmaWeb was built for use in IEOR 131: Discrete Event Simulation, taught at U.C
 - `description` is a tagline description of the product
 
 ###sigma
-```javascript
-"sigma": {
+```python
+sigma = {
     "model": "sigma/carwash.exe",    
     "parameters": [
         {   "name": "QUEUE",
@@ -57,8 +58,8 @@ Item in the `parameter` list:
 - `default` is the default value the form should begin at. When there get to be lots of parameters, it will be very cumbersome to enter in each one every time. Instead we can begin with a default value.
 
 ###graphs
-```javascript
-"graphs": [
+```python
+graphs = [
     {   "name": "Queue vs Time",
         "x-axis": "TIME",
         "x-display": "Time (seconds)",
@@ -85,8 +86,8 @@ Item in the `graph` list:
 - `y-display` is what is displayed on the y-axis, it can provide more description than the variable name
 
 ###server
-```javascript
-"server": {
+```python
+server = {
     "hostname": "localhost",
     "port": 9000
 }
@@ -98,4 +99,3 @@ Item in the `graph` list:
 
 ## Debugging
 - If the server is throwing a Key Value Error, you likely have a mismatch between a parameter in your settings.json and the Variables in your sigma model. Go back to sigma and make sure all parameters are defined.
-- If you are getting a JSON Decode error, you likely have incorrect formatting in your `settings.json` file. Compare it to the default included file and look for errors, like missing commas. You can also copy and paste the file into a [JSON validator](http://jsonlint.com/) which will help you find errors.
