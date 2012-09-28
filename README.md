@@ -7,9 +7,10 @@ SigmaWeb was built for use in IEOR 131: Discrete Event Simulation, taught at U.C
 
 ##Preparation
 - In order to use SigmaWeb, you must first prepare your sigma model to be compatible.
+- All variables that you want users to input should be placed in your `RUN` Event's parameters
 
 ##Settings
-- The `settings.json` file holds all your custom variable settings
+- The `settings.py` file holds all your custom variable settings
 - Each time the server starts, it will read your file and use them throughout
 
 ### Components:
@@ -50,7 +51,7 @@ sigma = {
 }
 ```
 - `model` should be the path to your compiled model, see Preparation on how to create that file.
-- `parameters` is a list of parameter objects, the order of this list is **very** important! The order of the parameters must match the order in your sigma model, otherwise the model will break.
+- `parameters` is a list of parameter dictionaries, the order of this list is **very** important! The order of the parameters must match the order in your sigma model, otherwise the model will break.
 
 Item in the `parameter` list:
 - `name` is the actual parameter name, for consistency, please use the same names you defined in your sigma model.
@@ -76,7 +77,7 @@ graphs = [
 
 ]
 ```
-- `graphs` is a list of graphs objects to be displayed after the simulation completes. The order signifies the display order of the graph on the results page.
+- `graphs` is a list of graph dictionaries to be displayed after the simulation completes. The order signifies the display order of the graph on the results page.
 
 Item in the `graph` list:
 - `name` is the title that appears above the graph
