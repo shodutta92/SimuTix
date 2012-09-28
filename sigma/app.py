@@ -2,31 +2,28 @@ from stats import *
 from parser import parse
 from time import time
 from random import randint
-from subprocess import Popen
+from subprocess import Popen, PIPE, STDOUT
 
-def exp_write(vars, params):
+def run_simulation(vars, params):
     """
     Takes in the variables to be written from the client forms
     and the params from the settings file which determines the
-    order of the parameters
-    Returns the unique output filename (current epoch time)
+    order of the parameters. 
+    Returns the parsed dictionary of output.
     """
 
     fname = int(time())
-    expfile = open(fname+'.exp', 'w')
 
     outfile = fname+'.out'
     randomseed = random.randint(0, 65534)
-    exparr = [outfile, randomseed]
-    exparr.extend(params)
-    expstring = ' '.join(outarr)
-    expfile.write(expstring)
-    expfile.flush()
-    expfile.close()
+    expstr = outfile + "\n" + randomseed
 
-    return outfile
+    p = Popen(settings['sigma']['model'], stdout=PIPE, stderr=STDOUT, stdin=PIPE)
+    p.communicate(input=expstr)
 
-def run_simulation(POST, graphs):
+    return outdict
+
+def build_graphs(POST, graphs):
     """
     Takes in the POST variables from the simulate Page
     and returns the dictionary of variables neccesary for graphs
