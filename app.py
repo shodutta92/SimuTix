@@ -3,6 +3,7 @@ from util.parser import parse
 from random import randint
 from subprocess import Popen, PIPE, STDOUT
 import os
+import sys
 import settings
 import tempfile
 
@@ -27,16 +28,26 @@ def build_graphs(POST, graphs):
 
     
 def test():
-    outfile = tempfile.NamedTemporaryFile()
+    outfile = "test.out"#tempfile.NamedTemporaryFile()
+    curr_path = os.getcwd()
     randomseed = randint(0, 65534)
-    exp = [outfile.name, "no", str(randomseed), "1000", "1", "3", "5"] 
-    expstr = "\n".join(exp) + "n"
-    print expstr
-    print os.getcwd()+settings.sigma['model']
+    exp = [outfile, "yes", str(randomseed), "1000", "1", "3", "5"] 
+    #expstr = " \r\n ".join(exp) + " \r"
+    #expstr = "test.out\n no\"
     
-    p = Popen(os.getcwd()+settings.sigma['model'], stdin=PIPE, universal_newlines=True)
-    p.communicate(input=expstr)
+    p = Popen(curr_path+settings.sigma['model'], stdin=PIPE)# stdout=PIPE, stderr=STDOUT)
+    p.stdin.write("test.out \n")
+    p.stdin.flush()
+    p.stdin.write("no \n")
+    p.stdin.flush()
+    p.stdin.write("1234 \n")
+    p.stdin.flush()
+    p.stdin.write("1000 \n")
+
+    #output = p.communicate(input=expstr)[0]
     
-    print outfile.read()
+    #outfile.write("hello")
+    #outfile.flush()
+    #print output
     
 test()

@@ -1,6 +1,6 @@
 from bottle import *
 import settings
-#from sigma.app import *
+import util.compile as compile
 
 # Home Page
 @get('/')
@@ -40,6 +40,9 @@ def images(filename):
 def fonts(filename):
     return static_file(filename, root='static/fonts')
   
+# Re-Compile Sigma Model
+compile.build(settings.sigma['model'])
+
 # Custom Template Path and Run Server with Debug on
 TEMPLATE_PATH.insert(0, "./templates/")
 debug(True)

@@ -7,7 +7,7 @@ info = {
 }
 
 sigma = {
-    "model": "\\model\\carwash.exe",    
+    "model": "Car_Wash",    
     "parameters": [
         {   "name": "QUEUE",
             "display": "Initial Queue",
