@@ -1,33 +1,29 @@
 from util.stats import *
 from util.parser import parse
+from util.decorators import run_in_env
 from random import randint
 from time import time
 from subprocess import Popen, PIPE, STDOUT
-import os
-import sys
-import settings
+import os, sys, shutil, settings
 
-def run_simulation(vars, params):
+PROJECT_PATH = os.getcwd()
+
+def clean_tmp():
+    if os.path.exists("tmp"):
+        print "folder exists"
+        shutil.rmtree("tmp")
+    else:
+        print "folder doesnt exist"
+        os.mkdir("tmp")
+        
+@run_in_env("tmp")  
+def run_simulation():
     """
     Takes in the variables to be written from the client forms
     and the params from the settings file which determines the
     order of the parameters. 
     Returns a parsed SigmaOutput instance of output file.
     """
-    randomseed = random.randint(0, 65534)
-    expstr = outfile + "\n" + randomseed
-
-    p = Popen(settings['sigma']['model'], stdout=PIPE, stderr=STDOUT, stdin=PIPE)
-    p.communicate(input=expstr)
-
-    return outdict
-
-def build_graphs(POST, graphs):
-
-    return 0
-
-    
-def test():
     model = settings.sigma['model']
 
     f_name = int(time())
@@ -42,7 +38,7 @@ def test():
     expfile.flush()
     expfile.close()
     
-    p = Popen(["model\\bin\\%s.exe" % model, 
+    p = Popen(["%s\\model\\bin\\%s.exe" % (PROJECT_PATH, model), 
                expfile_name], stdout=PIPE, stderr=STDOUT)
     p.wait()
     
@@ -50,5 +46,8 @@ def test():
     os.remove(expfile_name)
     os.remove(outfile_name)
     
-    print out_inst
-test()
+    return out_inst
+    
+def build_graphs(POST, graphs):
+
+    return 0  

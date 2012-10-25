@@ -2,9 +2,9 @@ import os
 def run_in_env(location):
     def outer(func):
         def inner(*args, **kwargs):
-            original_path = os.getcwd()
-            os.chdir("%s\\%s" % (original_path, location))
+            ORIGINAL_PATH = os.getcwd()
+            os.chdir("%s\\%s" % (ORIGINAL_PATH, location))
             func(*args, **kwargs)
-            os.chdir(original_path)
+            os.chdir(ORIGINAL_PATH)
         return inner
     return outer
