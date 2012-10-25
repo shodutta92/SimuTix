@@ -1,18 +1,18 @@
 from util.stats import *
 from util.parser import parse
 from random import randint
+from time import time
 from subprocess import Popen, PIPE, STDOUT
 import os
 import sys
 import settings
-import tempfile
 
 def run_simulation(vars, params):
     """
     Takes in the variables to be written from the client forms
     and the params from the settings file which determines the
     order of the parameters. 
-    Returns the parsed dictionary of output.
+    Returns a parsed SigmaOutput instance of output file.
     """
     randomseed = random.randint(0, 65534)
     expstr = outfile + "\n" + randomseed
@@ -28,26 +28,27 @@ def build_graphs(POST, graphs):
 
     
 def test():
-    outfile = "test.out"#tempfile.NamedTemporaryFile()
-    curr_path = os.getcwd()
-    randomseed = randint(0, 65534)
-    exp = [outfile, "yes", str(randomseed), "1000", "1", "3", "5"] 
-    #expstr = " \r\n ".join(exp) + " \r"
-    #expstr = "test.out\n no\"
-    
-    p = Popen(curr_path+settings.sigma['model'], stdin=PIPE)# stdout=PIPE, stderr=STDOUT)
-    p.stdin.write("test.out \n")
-    p.stdin.flush()
-    p.stdin.write("no \n")
-    p.stdin.flush()
-    p.stdin.write("1234 \n")
-    p.stdin.flush()
-    p.stdin.write("1000 \n")
+    model = settings.sigma['model']
 
-    #output = p.communicate(input=expstr)[0]
+    f_name = int(time())
+    outfile_name = "%s.out" % f_name
+    expfile_name = "%s.exp" % f_name
+    randomseed = randint(0, 65534)
+    exp = [outfile_name, "n", str(randomseed), "1000", "1", "3", "5"] 
+    expstr = " ".join(exp)
     
-    #outfile.write("hello")
-    #outfile.flush()
-    #print output
+    expfile = open(expfile_name, 'w')
+    expfile.write(expstr)
+    expfile.flush()
+    expfile.close()
     
+    p = Popen(["model\\bin\\%s.exe" % model, 
+               expfile_name], stdout=PIPE, stderr=STDOUT)
+    p.wait()
+    
+    out_inst = parse(outfile_name)
+    os.remove(expfile_name)
+    os.remove(outfile_name)
+    
+    print out_inst
 test()
