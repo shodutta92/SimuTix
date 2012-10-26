@@ -8,6 +8,10 @@ info = {
 
 sigma = {
     "model": "Car_Wash",    
+    "runtime":{"name": "RUNTIME",
+               "display": "Running Time",
+               "default": 1000
+              },
     "parameters": [
         {   "name": "QUEUE",
             "display": "Initial Queue",
@@ -18,11 +22,6 @@ sigma = {
             "display": "Number of Washers",
             "default": 4
         },
-
-        {   "name": "RUNTIME",
-            "display": "Running Time",
-            "default": 1000
-        }
     ]
 }
 

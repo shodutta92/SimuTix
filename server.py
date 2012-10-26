@@ -10,13 +10,19 @@ def index():
 
 # Simulate Page
 @get('/simulate')
-def simulate():  
+def simulate_get():  
     return template("simulate", {"info": settings.info, 
                                  "sigma": settings.sigma})
 
+@post('/simulate')
+def simulate_post():
+    out = run_simulation(request.forms, settings.sigma)
+    print out.headers.keys()
+    redirect('results')
+                                 
 # Results Page
 @get('/results')
-def simulate():  
+def results():  
     return template("results", {"info": settings.info})
 
 # Error 404 (when page is not found)

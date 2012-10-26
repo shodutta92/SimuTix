@@ -4,7 +4,8 @@ def run_in_env(location):
         def inner(*args, **kwargs):
             ORIGINAL_PATH = os.getcwd()
             os.chdir("%s\\%s" % (ORIGINAL_PATH, location))
-            func(*args, **kwargs)
+            ret = func(*args, **kwargs)
             os.chdir(ORIGINAL_PATH)
+            return ret
         return inner
     return outer

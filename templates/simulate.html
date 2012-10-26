@@ -16,8 +16,13 @@
         </div>
         <div class="row">
             <div class="span6">
-                <form class="form-horizontal" action="/" method="post">
-
+                <form class="form-horizontal" method="post">
+                    <div class="control-group">
+                         <label class="control-label">{{ sigma['runtime']['display'] }}</label>
+                         <div class="controls">
+                            <input type="text" name="{{ sigma['runtime']['name'] }}" value="{{ sigma['runtime']['default'] }}">
+                         </div>
+                     </div>
                     % for param in sigma['parameters']:
                      <div class="control-group">
                          <label class="control-label">{{ param['display'] }}</label>
@@ -26,8 +31,7 @@
                          </div>
                      </div>
                      % end
-
-                    <input class="btn btn-large btn-block btn-primary" type="input" value="Run Simulation">
+                    <input class="btn btn-large btn-block btn-primary" type="submit" value="Run Simulation">
                 </form>
             </div>
             <div class="span6">
