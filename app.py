@@ -42,7 +42,7 @@ def run_simulation(forms, sigma_settings):
     expfile.flush()
     expfile.close()
     
-    p = Popen(["%s\\model\\bin\\%s.exe" % (PROJECT_PATH, sigma_settings['model']), 
+    p = Popen(["%s\\sigma\\bin\\%s.exe" % (PROJECT_PATH, sigma_settings['model']), 
                expfile_name], stdout=PIPE, stderr=STDOUT)
     p.wait()
     

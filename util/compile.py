@@ -38,7 +38,7 @@ def link(model):
             "runtime", "console=4.0"])	
     link_p.wait()
 
-@run_in_env("model") 
+@run_in_env("sigma") 
 def build(model):
     fix(model)
     
