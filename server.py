@@ -50,5 +50,6 @@ compile.build(settings.sigma['model'])
 
 # Custom Template Path and Run Server with Debug on
 TEMPLATE_PATH.insert(0, "./templates/")
-#debug(True)
-run(host=settings.server['hostname'], port=settings.server['port'], reloader=True)
+print "SigmaWeb Running At: http://%s:%s" % (settings.server['hostname'], settings.server['port'])
+
+run(host=settings.server['hostname'], port=settings.server['port'], quiet=True)
