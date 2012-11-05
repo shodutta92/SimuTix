@@ -18,9 +18,11 @@ def simulate_get():
 def simulate_post():
     parsed = run_simulation(request.forms, settings.sigma)
     out = prepare_graphs(parsed, settings.graphs)
-    
+        
     return template("results", {"info": settings.info,
-                                "bind": out})
+                                "bind": out,
+                                "parameters": request.forms,
+                                "count": 0})
 
 # Error 404 (when page is not found)
 @error(404)

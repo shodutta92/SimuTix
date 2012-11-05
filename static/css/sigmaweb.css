@@ -1,3 +1,15 @@
 body {
     padding-top: 55px;
 }
+
+#view_param {
+    float: right;
+}
+
+#run_parameters td {
+    font-size: 15px;
+}
+
+#run_parameters td span {
+    font-weight: bold;
+}
