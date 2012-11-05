@@ -8,6 +8,7 @@ SigmaWeb was built for use in IEOR 131: Discrete Event Simulation, taught at U.C
 ##Preparation
 - In order to use SigmaWeb, you must first prepare your sigma model to be compatible.
 - All variables that you want users to input should be placed in your `RUN` Event's parameters
+- Then, do a Fast C compile and copy the `.c` file and place it in `SigmaWeb\sigma\src`
 
 ##Settings
 - The `settings.py` file holds all your custom variable settings
@@ -22,35 +23,45 @@ info = {
     "description":  
         """This is a simulation demo of the classic Carwash model. 
            I hope you enjoy!"""
+    "additional":
+        """<h3>Additional Info:</h3>
+        <ul>
+            <li>LOREM IPSUM DOLOR</li>
+            <li>LOREM IPSUM DOLOR</li>
+            <li>LOREM IPSUM DOLOR</li>
+            <li>LOREM IPSUM DOLOR</li>
+            <li>LOREM IPSUM DOLOR</li>
+        </ul>
+        """
 }
 ```
 - `team` is your project or team name
 - `members` can be a comma sperated list of the team members
 - `description` is a tagline description of the product
+- `additional` shows up on the sidebar of the simulate page, use it to give additional information to your users _note: HTML formatting is allowed here_
 
 ###sigma
 ```python
 sigma = {
-    "model": "sigma/carwash.exe",    
+    "model": "Car_Wash",    
+    "runtime":{"name": "RUNTIME",
+               "display": "Running Time",
+               "default": 1000
+              },
     "parameters": [
         {   "name": "QUEUE",
             "display": "Initial Queue",
             "default": 0
         },
 
-        {   "name": "SERVER",
+        {   "name": "SERVERS",
             "display": "Number of Washers",
             "default": 4
         },
-
-        {   "name": "RUNTIME",
-            "display": "Running Time",
-            "default": 1000
-        }
     ]
 }
 ```
-- `model` should be the path to your compiled model, see Preparation on how to create that file.
+- `model` should be the name of your `.c` file. However do **NOT** put the extension in this field.
 - `parameters` is a list of parameter dictionaries, the order of this list is **very** important! The order of the parameters must match the order in your sigma model, otherwise the model will break.
 
 Item in the `parameter` list:
@@ -97,6 +108,3 @@ server = {
 - `server` are advanced settings for running the server. If you are unsure what to do here, leave the default values, you should not have a problem.
 - `hostname` is the ip address or host for the server to run on
 - `port` is the port number
-
-## Debugging
-- If the server is throwing a Key Value Error, you likely have a mismatch between a parameter in your settings.json and the Variables in your sigma model. Go back to sigma and make sure all parameters are defined.
