@@ -4,7 +4,8 @@ from util.decorators import run_in_env
 from random import randint
 from time import time
 from subprocess import Popen, PIPE, STDOUT
-import os, sys, shutil
+import os, sys
+from glob import glob
 
 PROJECT_PATH = os.getcwd()
 
@@ -13,9 +14,13 @@ def clean_tmp():
     Removes any files leftover in the tmp directory. 
     Also creates the tmp directory if it does not exist.
     """
-    if os.path.exists("tmp"):
-        shutil.rmtree("tmp")
-    os.mkdir("tmp")
+    if not os.path.exists("tmp"):
+        os.mkdir("tmp")
+    else:
+        for f in glob('tmp/*.exp'):
+            os.unlink(f)
+        for f in glob('tmp/*.out'):
+            os.unlink(f)
         
 @run_in_env("tmp")  
 def run_simulation(forms, sigma_settings):

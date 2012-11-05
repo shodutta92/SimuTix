@@ -9,6 +9,7 @@ SigmaWeb was built for use in IEOR 131: Discrete Event Simulation, taught at U.C
 - In order to use SigmaWeb, you must first prepare your sigma model to be compatible.
 - All variables that you want users to input should be placed in your `RUN` Event's parameters
 - Then, do a Fast C compile and copy the `.c` file and place it in `SigmaWeb\sigma\src`
+- If your model uses a `.dat` file place the file in `SigmaWeb\tmp` folder.
 
 ##Running
 - To run the server, double click on `server.py`, then open up your favorite browser and navigate to the given url
