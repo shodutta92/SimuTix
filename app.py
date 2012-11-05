@@ -65,9 +65,9 @@ def prepare_graphs(parsed_data, graph_settings):
     data = {}
 
     for graph in graph_settings:
-        if not data.has_key(graph['x-axis']):
+        if graph['x-axis'] not in data:
             data[graph['x-axis']] = parsed_data.getColumn(graph['x-axis'])
-        if not data.has_key(graph['y-axis']):
+        if graph['y-axis'] not in data:
             data[graph['y-axis']] = parsed_data.getColumn(graph['y-axis'])
     
     out = {"data": data, "graphs": graph_settings}
