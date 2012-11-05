@@ -66,6 +66,7 @@ sigma = {
 }
 ```
 - `model` should be the name of your `.c` file. However do **NOT** put the extension in this field.
+- `runtime` is a special run parameter, you should only need to change `display` and/or `default` here.
 - `parameters` is a list of parameter dictionaries, the order of this list is **very** important! The order of the parameters must match the order in your sigma model, otherwise the model will break.
 
 Item in the `parameter` list:
