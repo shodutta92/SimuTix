@@ -10,6 +10,9 @@ SigmaWeb was built for use in IEOR 131: Discrete Event Simulation, taught at U.C
 - All variables that you want users to input should be placed in your `RUN` Event's parameters
 - Then, do a Fast C compile and copy the `.c` file and place it in `SigmaWeb\sigma\src`
 
+##Running
+- To run the server, double click on `server.py`, then open up your favorite browser and navigate to the given url
+
 ##Settings
 - The `settings.py` file holds all your custom variable settings
 - Each time the server starts, it will read your file and use them throughout

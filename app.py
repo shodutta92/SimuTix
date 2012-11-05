@@ -53,6 +53,10 @@ def run_simulation(forms, sigma_settings):
     return out_inst
     
 def prepare_graphs(parsed_data, graph_settings):
+    """
+    Takes in parsed SigmaOutput type data from run_simulation,
+    returns a dictionary ready to be sent to the client.
+    """
     data = {}
 
     for graph in graph_settings:
