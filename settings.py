@@ -5,7 +5,7 @@ info = {
         """This is a simulation demo of the classic Carwash model. 
            I hope you enjoy!""",
     "additional":
-        """<h3>Additional Info</h3>
+        """<h3>Additional Info:</h3>
         <ul>
             <li>LOREM IPSUM DOLOR</li>
             <li>LOREM IPSUM DOLOR</li>

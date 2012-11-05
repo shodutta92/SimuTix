@@ -88,7 +88,7 @@ graphs = [
 
 ]
 ```
-- `graphs` is a list of graph dictionaries to be displayed after the simulation completes. The order signifies the display order of the graph on the results page.
+- `graphs` is a list of graph dictionaries to be displayed after the simulation completes. The order signifies the display order of the graphs on the results page.
 
 Item in the `graph` list:
 - `name` is the title that appears above the graph
