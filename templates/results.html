@@ -1,17 +1,40 @@
 <!DOCTYPE html> 
 <html dir="ltr" lang="en-US"> 
+<head> 
+<!-- SigmaWeb By Sanketh Katta --> 
+	<meta charset="utf-8" /> 
+	<title>{{ info['team'] }}</title> 
 
-% include head data={"info": info}
+	<!-- Stylesheets --> 
+	<link rel="stylesheet" type="text/css" href="bootstrap.min.css"/> 
+	<link rel="stylesheet" type="text/css" href="sigmaweb.css"/> 
+	<link rel="stylesheet" type="text/css" href="nv.d3.css"/> 
+
+	<!-- JavaScripts --> 
+	<script type="text/javascript" src="d3.v2.min.js"></script> 
+	<script type="text/javascript" src="nv.d3.min.js"></script> 
+    <script type="text/javascript" src="lineWithFocusChart.js"></script>
+    <script type="text/javascript">
+        var bind = {{!bind}};
+    </script>
+</head> 
 
 <body> 
     % include navbar data={"info": info, "__simulate": "", "__results": "active"}
-
+    
     <div class="container">
         <div class="row">
             <div class="span12">
                 <div class="page-header">
                     <h1>Results. <small>analyze your output<small></h1>
                 </div>
+                <div id="charts">
+				% for i in range(len(bind['graphs'])):
+                    <h3>{{ bind['graphs'][i]['name'] }}</h3>
+                    <svg id="chart{{i}}" style="height:500px"></svg>
+                % end
+                </div>
+                <script type="text/javascript" src="sigmaweb.js"></script>
             </div>
         </div>
    </div>

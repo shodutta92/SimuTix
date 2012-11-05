@@ -52,6 +52,14 @@ def run_simulation(forms, sigma_settings):
     
     return out_inst
     
-def build_graphs(POST, graphs):
+def prepare_graphs(parsed_data, graph_settings):
+    data = {}
 
-    return 0  
+    for graph in graph_settings:
+        if not data.has_key(graph['x-axis']):
+            data[graph['x-axis']] = parsed_data.getColumn(graph['x-axis'])
+        if not data.has_key(graph['y-axis']):
+            data[graph['y-axis']] = parsed_data.getColumn(graph['y-axis'])
+    
+    out = {"data": data, "graphs": graph_settings}
+    return out

@@ -13,17 +13,14 @@ def index():
 def simulate_get():  
     return template("simulate", {"info": settings.info, 
                                  "sigma": settings.sigma})
-
+                         
 @post('/simulate')
 def simulate_post():
-    out = run_simulation(request.forms, settings.sigma)
-    print out.headers.keys()
-    redirect('results')
-                                 
-# Results Page
-@get('/results')
-def results():  
-    return template("results", {"info": settings.info})
+    parsed = run_simulation(request.forms, settings.sigma)
+    out = prepare_graphs(parsed, settings.graphs)
+    
+    return template("results", {"info": settings.info,
+                                "bind": out})
 
 # Error 404 (when page is not found)
 @error(404)
@@ -48,10 +45,10 @@ def fonts(filename):
     return static_file(filename, root='static/fonts')
   
 # Re-Compile Sigma Model and Clean\Create tmp directory
-compile.build(settings.sigma['model'])
 clean_tmp()
+compile.build(settings.sigma['model'])
 
 # Custom Template Path and Run Server with Debug on
 TEMPLATE_PATH.insert(0, "./templates/")
 #debug(True)
-run(host=settings.server['hostname'], port=settings.server['port'])#, reloader=True)
+run(host=settings.server['hostname'], port=settings.server['port'], reloader=True)

@@ -3,7 +3,17 @@ info = {
     "members":   "Sanketh, Soroush, Pranava, and Nathan",
     "description":  
         """This is a simulation demo of the classic Carwash model. 
-           I hope you enjoy!"""
+           I hope you enjoy!""",
+    "additional":
+        """<h3>Additional Info</h3>
+        <ul>
+            <li>LOREM IPSUM DOLOR</li>
+            <li>LOREM IPSUM DOLOR</li>
+            <li>LOREM IPSUM DOLOR</li>
+            <li>LOREM IPSUM DOLOR</li>
+            <li>LOREM IPSUM DOLOR</li>
+        </ul>
+        """
 }
 
 sigma = {
@@ -18,7 +28,7 @@ sigma = {
             "default": 0
         },
 
-        {   "name": "SERVER",
+        {   "name": "SERVERS",
             "display": "Number of Washers",
             "default": 4
         },
@@ -27,16 +37,16 @@ sigma = {
 
 graphs = [
     {   "name": "Queue vs Time",
-        "x-axis": "TIME",
+        "x-axis": "Time",
         "x-display": "Time (seconds)",
         "y-axis": "QUEUE",
         "y-display": "Number in Queue"
     },
 
     {   "name": "Server vs Time",
-        "x-axis": "TIME",
+        "x-axis": "Time",
         "x-display": "Time (seconds)",
-        "y-axis": "SERVER",
+        "y-axis": "SERVERS",
         "y-display": "Servers Available"
     }
 ]

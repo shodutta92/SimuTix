@@ -1,8 +1,17 @@
 <!DOCTYPE html> 
 <html dir="ltr" lang="en-US"> 
 
-% include head data={"info": info}
+<head> 
+<!-- SigmaWeb By Sanketh Katta --> 
+	<meta charset="utf-8" /> 
+	<title>{{ info['team'] }}</title> 
 
+	<!-- Stylesheets --> 
+	<link rel="stylesheet" type="text/css" href="bootstrap.min.css"/> 
+	<link rel="stylesheet" type="text/css" href="sigmaweb.css"/> 
+
+</head> 
+ 
 <body> 
     % include navbar data={"info": info, "__simulate": "active", "__results": ""}
 
@@ -36,7 +45,7 @@
             </div>
             <div class="span6">
                 <div class="well">
-                    <p> LOREM IPSUM DOLOR </p>
+                    <p>{{!info['additional']}} </p>
                 </div>
             </div>
         </div>
