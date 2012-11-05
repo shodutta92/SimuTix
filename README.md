@@ -38,7 +38,7 @@ info = {
 - `team` is your project or team name
 - `members` can be a comma sperated list of the team members
 - `description` is a tagline description of the product
-- `additional` shows up on the sidebar of the simulate page, use it to give additional information to your users _note: HTML formatting is allowed here_
+- `additional` shows up on the sidebar of the simulate page, use it to give additional information to your users about run parameters _note: HTML formatting is allowed here_
 
 ###sigma
 ```python
