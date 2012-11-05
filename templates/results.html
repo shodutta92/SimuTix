@@ -39,8 +39,8 @@
                      <div class="modal-body">
                         <table id="run_parameters" class="table table-striped">
                             <tbody>
-                            % for param, value in parameters.iteritems():
-                            <tr><td><span>{{param}}:</span></td><td>{{value}}</td></tr>
+                            % for param in settings_params:
+                            <tr><td><span>{{param['display']}}:</span></td><td>{{parameters[param['name']]}}</td></tr>
                             % end
                             </tbody>
                         </table>

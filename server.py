@@ -22,7 +22,7 @@ def simulate_post():
     return template("results", {"info": settings.info,
                                 "bind": out,
                                 "parameters": request.forms,
-                                "count": 0})
+                                "settings_params": settings.sigma['parameters']})
 
 # Error 404 (when page is not found)
 @error(404)
