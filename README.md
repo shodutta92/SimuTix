@@ -78,14 +78,14 @@ Item in the `parameter` list:
 ```python
 graphs = [
     {   "name": "Queue vs Time",
-        "x-axis": "TIME",
+        "x-axis": "Time",
         "x-display": "Time (seconds)",
         "y-axis": "QUEUE",
         "y-display": "Number in Queue"
     },
 
     {   "name": "Server vs Time",
-        "x-axis": "TIME",
+        "x-axis": "Time",
         "x-display": "Time (seconds)",
         "y-axis": "SERVER",
         "y-display": "Servers Available"
@@ -101,6 +101,8 @@ Item in the `graph` list:
 - `x-display` is what is displayed on the x-axis, it can provide more description than the variable name
 - `y-axis` is the sigma variable to be used on the y-axis
 - `y-display` is what is displayed on the y-axis, it can provide more description than the variable name
+
+- Also note that `"Time"` is a special variable here, it must be written exactly as so, with a capital T and the rest lowercase, it is how Sigma likes to output the name in the trace. 
 
 ###server
 ```python
