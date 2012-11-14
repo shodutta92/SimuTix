@@ -43,12 +43,6 @@ graphs = [
         "y-display": "Number in Queue"
     },
 
-    {   "name": "Server vs Time",
-        "x-axis": "Time",
-        "x-display": "Time (seconds)",
-        "y-axis": "SERVERS",
-        "y-display": "Servers Available"
-    }
 ]
 
 server = {
