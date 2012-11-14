@@ -36,13 +36,21 @@ sigma = {
 }
 
 graphs = [
-    {   "name": "Queue vs Time",
+    {   "graph_name": "Queue and Server vs Time",
         "x-axis": "Time",
         "x-display": "Time (seconds)",
-        "y-axis": "QUEUE",
-        "y-display": "Number in Queue"
+        "y-axis": ["QUEUE", "SERVERS"],
+        "y-display": "Number in Queue or Servers Idle",
+        "lines": ["Number In Queue", "Number In Server"]
     },
 
+    {   "graph_name": "Server vs Time",
+        "x-axis": "Time",
+        "x-display": "Time (seconds)",
+        "y-axis": ["SERVERS"],
+        "y-display": "Servers Available",
+        "lines": ["Server vs Time"]
+    }
 ]
 
 server = {

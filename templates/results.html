@@ -52,7 +52,7 @@
 
                 <div id="charts">
 				% for i in range(len(bind['graphs'])):
-                    <h3>{{ bind['graphs'][i]['name'] }}</h3>
+                    <h3>{{ bind['graphs'][i]['graph_name'] }}</h3>
                     <svg id="chart{{i}}" style="height:500px"></svg>
                 % end
                 </div>

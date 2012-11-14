@@ -1,5 +1,7 @@
 #SigmaWeb IEOR 131
 
+## THIS IS THE MULTIGRAPH VERSION, `settings.py` FROM THE ORIGINAL SIGMA WEB WILL NOT WORK HERE
+
 ##What is this?
 SigmaWeb is a simple framework for easily and quickly creating web interfaces for the Sigma simulation software. 
 It is built as a self-contained package which requires only a default python installation to run. 
@@ -77,30 +79,32 @@ Item in the `parameter` list:
 ###graphs
 ```python
 graphs = [
-    {   "name": "Queue vs Time",
+    {   "graph_name": "Queue and Server vs Time",
         "x-axis": "Time",
         "x-display": "Time (seconds)",
-        "y-axis": "QUEUE",
-        "y-display": "Number in Queue"
+        "y-axis": ["QUEUE", "SERVERS"],
+        "y-display": "Number in Queue or Servers Idle",
+        "lines": ["Number In Queue", "Number In Server"]
     },
 
-    {   "name": "Server vs Time",
+    {   "graph_name": "Server vs Time",
         "x-axis": "Time",
         "x-display": "Time (seconds)",
-        "y-axis": "SERVER",
-        "y-display": "Servers Available"
+        "y-axis": ["SERVERS"],
+        "y-display": "Servers Available",
+        "lines": ["Server vs Time"]
     }
-
 ]
 ```
 - `graphs` is a list of graph dictionaries to be displayed after the simulation completes. The order signifies the display order of the graphs on the results page.
 
 Item in the `graph` list:
-- `name` is the title that appears above the graph
+- `graph_name` is the title that appears above the graph
 - `x-axis` is the sigma variable to be used on the x-axis
 - `x-display` is what is displayed on the x-axis, it can provide more description than the variable name
-- `y-axis` is the sigma variable to be used on the y-axis
-- `y-display` is what is displayed on the y-axis, it can provide more description than the variable name
+- `y-axis` is a list of sigma variables to be used on the y-axis
+- `y-display` is what is displayed on the y-axis
+- `lines` is a list of the names of the lines on the graph (this corresponds to the `y-axis` list
 
 - Also note that `"Time"` is a special variable here, it must be written exactly as so, with a capital T and the rest lowercase, it is how Sigma likes to output the name in the trace. 
 

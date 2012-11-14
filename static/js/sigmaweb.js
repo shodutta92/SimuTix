@@ -1,13 +1,4 @@
-for (i = 0; i < bind.graphs.length; i++) {
-    graphData = {}
-    graphData['key'] = bind.graphs[i]['name']
-    graphData['values'] = []
-    for (j = 0; j < bind.data[bind.graphs[i]['x-axis']].length; j++) {
-        graphData['values'].push({"x": bind.data[bind.graphs[i]['x-axis']][j],
-                                     "y": bind.data[bind.graphs[i]['y-axis']][j]})
-    
-    }
-    
+for (i = 0; i < bind.data.length; i++) {    
     var callback = function(bind, i) {
       var chart = nv.models.lineWithFocusChart();
       
@@ -26,7 +17,7 @@ for (i = 0; i < bind.graphs.length; i++) {
 
 
       d3.select('#charts #chart'+i)
-          .datum([graphData,])
+          .datum(bind.data[i])
           .transition().duration(500)
           .call(chart);
 

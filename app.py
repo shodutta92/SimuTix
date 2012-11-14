@@ -62,13 +62,16 @@ def prepare_graphs(parsed_data, graph_settings):
     Takes in parsed SigmaOutput type data from run_simulation,
     returns a dictionary ready to be sent to the client.
     """
-    data = {}
 
+    graphData = []
     for graph in graph_settings:
-        if graph['x-axis'] not in data:
-            data[graph['x-axis']] = parsed_data.getColumn(graph['x-axis'])
-        if graph['y-axis'] not in data:
-            data[graph['y-axis']] = parsed_data.getColumn(graph['y-axis'])
-    
-    out = {"data": data, "graphs": graph_settings}
+        lines = []
+        for line in range(len(graph['lines'])):
+            cur_graph = {'key': graph['lines'][line], 'values': []}
+            for i in range(len(parsed_data.getColumn(graph['x-axis']))):
+                cur_graph['values'].append({"x": parsed_data.getColumn(graph['x-axis'])[i],
+                                            "y": parsed_data.getColumn(graph['y-axis'][line])[i]})
+            lines.append(cur_graph)
+        graphData.append(lines)
+    out = {"data": graphData, "graphs": graph_settings}
     return out
