@@ -6,6 +6,7 @@ from time import time
 from subprocess import Popen, PIPE, STDOUT
 import os, sys
 from glob import glob
+import math
 
 PROJECT_PATH = os.getcwd()
 
@@ -57,7 +58,7 @@ def run_simulation(forms, sigma_settings):
     
     return out_inst
     
-def prepare_graphs(parsed_data, graph_settings):
+def prepare_graphs(parsed_data, graph_settings, rdp_enable):
     """
     Takes in parsed SigmaOutput type data from run_simulation,
     returns a dictionary ready to be sent to the client.
@@ -66,12 +67,64 @@ def prepare_graphs(parsed_data, graph_settings):
     graphData = []
     for graph in graph_settings:
         lines = []
+        prev_point = None
         for line in range(len(graph['lines'])):
             cur_graph = {'key': graph['lines'][line], 'values': []}
             for i in range(len(parsed_data.getColumn(graph['x-axis']))):
-                cur_graph['values'].append({"x": parsed_data.getColumn(graph['x-axis'])[i],
-                                            "y": parsed_data.getColumn(graph['y-axis'][line])[i]})
+                if prev_point == None:
+                    prev_point = {"x": parsed_data.getColumn(graph['x-axis'])[i], "y": parsed_data.getColumn(graph['y-axis'][line])[i]}
+                elif prev_point["x"] == parsed_data.getColumn(graph['x-axis'])[i]:
+                    prev_point["y"] = parsed_data.getColumn(graph['y-axis'][line])[i]
+                else:
+                    cur_graph['values'].append({"x": parsed_data.getColumn(graph['x-axis'])[i],
+                                                "y": parsed_data.getColumn(graph['y-axis'][line])[i]})
+                    prev_point = cur_graph['values'][-1]
+                    
+            if rdp_enable:
+                cur_graph['values'] = rdp_reduce(cur_graph['values'], graph['rdp_epsilon'][line])
+
             lines.append(cur_graph)
         graphData.append(lines)
+    
     out = {"data": graphData, "graphs": graph_settings}
     return out
+    
+
+    
+def perpendicular_distance(point, line):
+    """ 
+    Takes in a point and a line, and returns the minimum distance between them
+    point is of form: {"x": 1, "y": 2}, line is a tuple of 2 points.
+    """
+    slope = float(line[1]["y"] - line[0]["y"]) / (line[1]["x"] - line[0]["x"])
+    intercept = line[0]["y"] - slope*line[0]["x"]
+    distance = float(abs(slope*point["x"] - point["y"] + intercept)) / math.sqrt(math.pow(slope, 2) + 1)
+    return distance
+    
+def rdp_reduce(point_list, epsilon):
+    """
+    Takes in a list of points [{"x": 1, "y": 2}, {"x": 3, "y": 4}, ...]
+    and returns a list of reduced points, according to the given epsilon
+    """
+
+    dmax = 0
+    index = 0
+    for i in range(2, len(point_list)):
+        d = perpendicular_distance(point_list[i], (point_list[1], point_list[-1]))
+        if d > dmax:
+            index = i
+            dmax = d
+            
+    if dmax >= epsilon:
+        rec_results1 = rdp_reduce(point_list[1:index], epsilon)
+        rec_results2 = rdp_reduce(point_list[index:], epsilon)
+
+        result_list = rec_results1[1:-1] + rec_results2[1:]
+    
+    else:
+        result_list = point_list
+
+    return result_list
+    
+    
+

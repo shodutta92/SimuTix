@@ -1,7 +1,7 @@
 from bottle import *
 import settings
 import util.compile as compile
-from app import *
+from app import clean_tmp, run_simulation, prepare_graphs
 
 # Home Page
 @get('/')
@@ -17,7 +17,7 @@ def simulate_get():
 @post('/simulate')
 def simulate_post():
     parsed = run_simulation(request.forms, settings.sigma)
-    out = prepare_graphs(parsed, settings.graphs)
+    out = prepare_graphs(parsed, settings.graphs, settings.rdp_enable)
         
     return template("results", {"info": settings.info,
                                 "bind": out,

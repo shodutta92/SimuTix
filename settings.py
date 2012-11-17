@@ -20,12 +20,12 @@ sigma = {
     "model": "Car_Wash",    
     "runtime":{"name": "RUNTIME",
                "display": "Running Time",
-               "default": 1000
+               "default": 10000
               },
     "parameters": [
         {   "name": "QUEUE",
             "display": "Initial Queue",
-            "default": 0
+            "default": 3
         },
 
         {   "name": "SERVERS",
@@ -35,13 +35,16 @@ sigma = {
     ]
 }
 
+rdp_enable = True
+
 graphs = [
     {   "graph_name": "Queue and Server vs Time",
         "x-axis": "Time",
         "x-display": "Time (seconds)",
         "y-axis": ["QUEUE", "SERVERS"],
         "y-display": "Number in Queue or Servers Idle",
-        "lines": ["Number In Queue", "Number In Server"]
+        "lines": ["Number In Queue", "Number In Server"],
+        "rdp_epsilon": [1, 1.5]
     },
 
     {   "graph_name": "Server vs Time",
@@ -49,7 +52,8 @@ graphs = [
         "x-display": "Time (seconds)",
         "y-axis": ["SERVERS"],
         "y-display": "Servers Available",
-        "lines": ["Server vs Time"]
+        "lines": ["Server vs Time"],
+        "rdp_epsilon": [1]
     }
 ]
 

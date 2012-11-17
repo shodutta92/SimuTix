@@ -78,13 +78,16 @@ Item in the `parameter` list:
 
 ###graphs
 ```python
+rdp_enable = True
+
 graphs = [
     {   "graph_name": "Queue and Server vs Time",
         "x-axis": "Time",
         "x-display": "Time (seconds)",
         "y-axis": ["QUEUE", "SERVERS"],
         "y-display": "Number in Queue or Servers Idle",
-        "lines": ["Number In Queue", "Number In Server"]
+        "lines": ["Number In Queue", "Number In Server"],
+        "rdp_epsilon": [.5, 1]
     },
 
     {   "graph_name": "Server vs Time",
@@ -92,11 +95,14 @@ graphs = [
         "x-display": "Time (seconds)",
         "y-axis": ["SERVERS"],
         "y-display": "Servers Available",
-        "lines": ["Server vs Time"]
+        "lines": ["Server vs Time"],
+        "rdp_epsilon": [1]
     }
 ]
 ```
 - `graphs` is a list of graph dictionaries to be displayed after the simulation completes. The order signifies the display order of the graphs on the results page.
+
+- `rdp_enable` is a boolean, `True` means on, `False` means off, it is used to turn on and off the [Ramer–Douglas–Peucker](http://en.wikipedia.org/wiki/Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm) algorithm for point reduction
 
 Item in the `graph` list:
 - `graph_name` is the title that appears above the graph
@@ -105,6 +111,7 @@ Item in the `graph` list:
 - `y-axis` is a list of sigma variables to be used on the y-axis
 - `y-display` is what is displayed on the y-axis
 - `lines` is a list of the names of the lines on the graph (this corresponds to the `y-axis` list
+- `rdp_epsilon` is a list of distances greater than 0 as a threshold for trimming values, each corresponds to a line
 
 - Also note that `"Time"` is a special variable here, it must be written exactly as so, with a capital T and the rest lowercase, it is how Sigma likes to output the name in the trace. 
 
