@@ -1,5 +1,14 @@
+@font-face {
+    font-family: 'HelveticaNeue-UltraLight';
+
+    src: url('HelveticaNeue-UltraLight.ttf') format('truetype');
+}
+
 body {
-    padding-top: 55px;
+    font-family: 'HelveticaNeue-UltraLight';
+
+    color: #fff;
+    background-color: #031634;
 }
 
 #view_param {
@@ -12,4 +21,361 @@ body {
 
 #run_parameters td span {
     font-weight: bold;
+}
+
+.backArrow {
+    display: inline-block;
+
+    margin-right: 10px;
+    padding: 5px 10px 10px 10px;
+
+    cursor: pointer;
+    -webkit-transform: rotate(-90deg);
+
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 50px;
+}
+
+.main-bannerText {
+    font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-size: 40px;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    height: 400px; /*Adjust for vertical align */
+    margin: auto;
+
+    text-align: center;
+    vertical-align: middle;
+    letter-spacing: 2px;
+
+    color: #fff;
+}
+
+.main-bannerText h1 {
+    font-size: 50px;
+}
+
+.main-bannerText p {
+    font-size: 30px;
+
+    margin-bottom: 30px;
+}
+
+.main-button {
+    font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-size: 25px;
+
+    width: 250px;
+    margin-right: 30px;
+    margin-left: 30px;
+
+    border-radius: 0;
+    background-color: #033649;
+}
+
+.main-flow {
+    font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-size: 30px;
+
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+
+    color: #fff;
+}
+
+.simulate-header {
+    font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+
+    letter-spacing: 1px;
+
+    color: #fff;
+}
+
+.simulate-header small {
+    color: #cdb380;
+}
+
+.simulate-options {
+    font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-size: 20px;
+
+    margin-top: 20px;
+
+    letter-spacing: 1px;
+
+    color: #fff;
+}
+
+.simulate-uploadButton {
+    width: 200px;
+    margin-left: 100px;
+
+    letter-spacing: 1px;
+
+    border-radius: 0;
+    background-color: #033649;
+}
+
+.simulate-table {
+    font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-size: 18px;
+
+    overflow: auto;
+
+    max-height: 375px;
+    margin-top: 15px;
+    margin-left: 18px;
+
+    letter-spacing: 1px;
+
+    color: #fff;
+}
+
+.simulate-table th {
+    font-weight: normal;
+}
+
+.simulate-addFlight {
+    margin-top: 10px;
+    margin-left: 26px;
+
+    border-radius: 0;
+}
+
+.simulate-addFlight input {
+    font-family: Helvetica;
+    font-weight: lighter;
+
+    width: 150px !important;
+
+    letter-spacing: 1px;
+
+    color: #fff;
+    border-radius: 0;
+    background-color: #036564;
+}
+
+.simulate-addFlightButton {
+    width: 150px;
+    margin-left: 30px;
+
+    letter-spacing: 1px;
+
+    border-radius: 0;
+    background-color: #033649;
+}
+
+.simulate-timeAlert {
+    font-size: 20px;
+
+    width: 400px;
+    margin-left: 30px;
+
+    letter-spacing: 1px;
+
+    color: red;
+}
+
+.simulate-tabButton {
+    width: 150px;
+    margin-left: 26px;
+
+    letter-spacing: 1px;
+
+    border-radius: 0;
+    background-color: #033649;
+}
+
+.simulate-serverInput {
+    width: 150px;
+    padding-left: 10px;
+
+    letter-spacing: 1px;
+
+    color: #fff;
+    border-width: 1px;
+    border-radius: 0;
+    background-color: #036564;
+}
+
+.simulate-optimize {
+    width: 100%;
+    padding-left: 50px;
+}
+
+.simulate-optimizeButtons {
+    margin-left: 20px;
+
+    letter-spacing: 1px;
+}
+
+.simulate-optimizeButton {
+    width: 120px;
+
+    border-radius: 0;
+    background-color: #033649;
+}
+
+.simulate-simulateDiv {
+    width: 100%;
+    padding-left: 50px;
+}
+
+.simulate-simulateButton {
+    width: 200px;
+    margin-left: 30px;
+
+    letter-spacing: 1px;
+
+    border-radius: 0;
+    background-color: #033649;
+}
+
+.simulate-loading canvas {
+    vertical-align: middle;
+}
+
+.simulate-progress p {
+    font-size: 20px;
+
+    padding-left: 50px;
+
+    letter-spacing: 1px;
+}
+
+.simulate-maxQueueDiv {
+    margin-top: 15px;
+}
+
+.simulate-maxQueue {
+    font-family: Helvetica;
+    font-size: 14px;
+    font-weight: lighter;
+
+    width: 239px !important;
+    padding: 6px 12px;
+
+    letter-spacing: 1px;
+
+    color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 0;
+    background-color: #036564;
+}
+
+.hiddenFileInput {
+    overflow: hidden;
+
+    width: 0;
+    height: 0;
+}
+
+.nv-line {
+    /*stroke-opacity: 0.5 !important;*/
+    stroke-width: 1px !important;
+}
+
+.nv-axis text {
+    font-family: 'HelveticaNeue-UltraLight';
+    font-size: 14px;
+    font-weight: normal !important;
+
+    letter-spacing: 2px;
+
+    stroke: #fff;
+}
+
+.nv-axis line {
+    stroke: #fff !important;
+}
+
+.nv-legend text {
+    font-family: 'HelveticaNeue-UltraLight';
+    font-size: 14px;
+    font-weight: normal !important;
+
+    letter-spacing: 2px;
+
+    stroke: #fff;
+}
+
+.nvtooltip {
+    font-family: 'HelveticaNeue-UltraLight' !important;
+
+    letter-spacing: 1px;
+
+    background-color: #033649 !important;
+}
+
+.results-serversList {
+    font-size: 20px;
+
+    letter-spacing: 1px;
+}
+
+.results-axisSelect {
+    font-family: 'HelveticaNeue-UltraLight';
+    font-size: 20px;
+
+    width: 200px;
+
+    border-color: #036564;
+}
+
+.results-loadingDiv canvas {
+    vertical-align: middle;
+}
+
+.results-loadingText {
+    font-size: 50px;
+
+    display: inline-block;
+
+    letter-spacing: 1px;
+}
+
+#pastRuns {
+    float: left;
+    overflow: auto;
+
+    width: 100%;
+    max-height: 650px;
+}
+
+.results-pastRun {
+    padding: 10px;
+
+    cursor: pointer;
+
+    border-width: 1px 1px 1px 1px;
+    border-style: solid;
+    border-color: #357ebd;
+}
+
+.results-pastRun.active {
+    background-color: #036564;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #036564;
+}
+
+::-webkit-scrollbar-thumb {
+    /*border-radius: 10px;*/
+    background-color: #033649;
+}
+
+::-webkit-scrollbar-corner {
+    background-color: #031634;
 }

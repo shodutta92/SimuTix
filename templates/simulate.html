@@ -1,55 +1,205 @@
-<!DOCTYPE html> 
-<html dir="ltr" lang="en-US"> 
-
-<head> 
-<!-- SigmaWeb By Sanketh Katta --> 
-	<meta charset="utf-8" /> 
-	<title>{{ info['team'] }}</title> 
-
-	<!-- Stylesheets --> 
-	<link rel="stylesheet" type="text/css" href="bootstrap.min.css"/> 
-	<link rel="stylesheet" type="text/css" href="sigmaweb.css"/> 
-
-</head> 
- 
-<body> 
-    % include navbar data={"info": info, "__simulate": "active", "__results": ""}
-
-    <div class="container">
-        <div class="row">
-            <div class="span12">
-                <div class="page-header">
-                    <h1>Simulate. <small>customize your parameters<small></h1>
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+    <head>
+        <!-- SigmaWeb By Sanketh Katta -->
+        <meta charset="utf-8" />
+        <title>{{ info['team'] }}</title>
+        <!-- Stylesheets -->
+        <link rel="stylesheet" type="text/css" href="bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="sigmaweb.css"/>
+    </head>
+    <body>
+        <!-- % include navbar data={"info": info, "__simulate": "active", "__results": ""} -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="page-header simulate-header">
+                        <h1><span class="backArrow">&#8682;</span>Simulate <small>Customize your simulation</small>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 simulate-options">
+                    <span>1. Upload a CSV:</span>
+                    <button id="uploadCSV" class="btn btn-primary btn-large simulate-uploadButton">Upload</button>
+                    <div class="hiddenFileInput">
+                        <input name="uploadCSV" type="file" id="hiddenUploadCSV" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 simulate-options">
+                    <span>2. Manually add entries:</span>
+                    <form class="form-inline simulate-addFlight" role="form">
+                        <div class="form-group">
+                            <label class="sr-only" for="flightNumberInput">Flight #</label>
+                            <input type="text" class="form-control" id="flightNumberInput" placeholder="Flight #">
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="departureTimeInput">Flight #</label>
+                            <input type="text" class="form-control" id="departureTimeInput" placeholder="Departure Time">
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="numberPassengers">Flight #</label>
+                            <input type="text" class="form-control" id="numberPassengers" placeholder="# Passengers">
+                        </div>
+                        <button type="button" class="btn btn-primary btn-large simulate-addFlightButton" id="addFlightButton">Add Flight</button>
+                        <div class="form-group simulate-timeAlert" id="timeAlert">Wrong Time Format: Try 04:32 pm</div>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 simulate-options">
+                    <p>
+                    <span>3. Review data: </span>
+                    <div>
+                        <button class="btn btn-primary btn-large simulate-tabButton" id="flightsTableButton">Flights</button>
+                        <button class="btn btn-primary btn-large simulate-tabButton" id="serversTableButton">Servers</button>
+                    </div>
+                    <div class="simulate-table" id="flightTableDiv">
+                        <table id="flightTable" class="table">
+                            <thead>
+                                <tr>
+                                    <th>Flight Number</th>
+                                    <th>Departure Time</th>
+                                    <th>Number of Passengers</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="simulate-table" id="serverTableDiv">
+                        <table id="serverTable" class="table">
+                            <thead>
+                                <tr>
+                                    <th>Time Slot</th>
+                                    <th>Economy Servers</th>
+                                    <th>First Class Servers</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>12:00am - 4:00am</td>
+                                    <td><input type="text" class="simulate-serverInput" id="es0" value="12"></td>
+                                    <td><input type="text" class="simulate-serverInput" id="fc0" value="3"></td>
+                                </tr>
+                                <tr>
+                                    <td>4:00am - 8:00am</td>
+                                    <td><input type="text" class="simulate-serverInput" id="es1" value="9"></td>
+                                    <td><input type="text" class="simulate-serverInput" id="fc1" value="3"></td>
+                                </tr>
+                                <tr>
+                                    <td>8:00am - 12:00pm</td>
+                                    <td><input type="text" class="simulate-serverInput" id="es2" value="10"></td>
+                                    <td><input type="text" class="simulate-serverInput" id="fc2" value="3"></td>
+                                </tr>
+                                <tr>
+                                    <td>12:00pm - 4:00pm</td>
+                                    <td><input type="text" class="simulate-serverInput" id="es3" value="11"></td>
+                                    <td><input type="text" class="simulate-serverInput" id="fc3" value="3"></td>
+                                </tr>
+                                <tr>
+                                    <td>4:00pm - 8:00pm</td>
+                                    <td><input type="text" class="simulate-serverInput" id="es4" value="12"></td>
+                                    <td><input type="text" class="simulate-serverInput" id="fc4" value="3"></td>
+                                </tr>
+                                <tr>
+                                    <td>8:00pm - 12:00am</td>
+                                    <td><input type="text" class="simulate-serverInput" id="es5" value="13"></td>
+                                    <td><input type="text" class="simulate-serverInput" id="fc5" value="3"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    </p>
+                </div>
+                <div class="clearfix visible-xs"></div>
+                <div class="col-xs-6 simulate-options">
+                    <div class="simulate-optimize">
+                        <span>4. Simulate or Optimize: </span>
+                        <div class="btn-group simulate-optimizeButtons" data-toggle="buttons">
+                            <label class="btn btn-primary simulate-optimizeButton active">
+                                <input type="radio" name="options" id="simulate"> Simulate
+                            </label>
+                            <label class="btn btn-primary simulate-optimizeButton">
+                                <input type="radio" name="options" id="optimize"> Optimize
+                            </label>
+                        </div>
+                        <div class="simulate-maxQueueDiv" id="maxQueueDiv">
+                            <input type="text" class="simulate-maxQueue" id="maxEcon" placeholder="Max Economy Queue">
+                            <input type="text" class="simulate-maxQueue" id="maxFC" placeholder="Max First Class Queue">
+                        </div>
+                    </div>
+                    <div class="simulate-options simulate-simulateDiv">
+                        <span>5. Run program:</span>
+                        <button class="btn btn-primary btn-large simulate-simulateButton" id="simulateButton">Run</button>
+                    </div>
+                </div>
+                <div class="col-xs-6 simulate-options">
+                    <div class="simulate-loading" id="loading" style="height:90px">
+                    </div>
+                    <div class="simulate-progress" id="simulateProgress">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                    <th>6</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td width="200px">Economy Queues</td>
+                                    <td width="50px" id="econQueue0"></td>
+                                    <td width="50px" id="econQueue1"></td>
+                                    <td width="50px" id="econQueue2"></td>
+                                    <td width="50px" id="econQueue3"></td>
+                                    <td width="50px" id="econQueue4"></td>
+                                    <td width="50px" id="econQueue5"></td>
+                                </tr>
+                                <tr>
+                                    <td width="200px">Economy Servers</td>
+                                    <td width="50px" id="econServers0"></td>
+                                    <td width="50px" id="econServers1"></td>
+                                    <td width="50px" id="econServers2"></td>
+                                    <td width="50px" id="econServers3"></td>
+                                    <td width="50px" id="econServers4"></td>
+                                    <td width="50px" id="econServers5"></td>
+                                </tr>
+                                <tr>
+                                    <td width="200px">First Class Queues</td>
+                                    <td width="50px" id="fcQueue0"></td>
+                                    <td width="50px" id="fcQueue1"></td>
+                                    <td width="50px" id="fcQueue2"></td>
+                                    <td width="50px" id="fcQueue3"></td>
+                                    <td width="50px" id="fcQueue4"></td>
+                                    <td width="50px" id="fcQueue5"></td>
+                                </tr>
+                                <tr>
+                                    <td width="200px">First Class Servers</td>
+                                    <td width="50px" id="fcServers0"></td>
+                                    <td width="50px" id="fcServers1"></td>
+                                    <td width="50px" id="fcServers2"></td>
+                                    <td width="50px" id="fcServers3"></td>
+                                    <td width="50px" id="fcServers4"></td>
+                                    <td width="50px" id="fcServers5"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="span6">
-                <form class="form-horizontal" method="post">
-                    <div class="control-group">
-                         <label class="control-label">{{ sigma['runtime']['display'] }}</label>
-                         <div class="controls">
-                            <input type="text" name="{{ sigma['runtime']['name'] }}" value="{{ sigma['runtime']['default'] }}">
-                         </div>
-                     </div>
-                    % for param in sigma['parameters']:
-                     <div class="control-group">
-                         <label class="control-label">{{ param['display'] }}</label>
-                         <div class="controls">
-                            <input type="text" name="{{ param['name'] }}" value="{{ param['default'] }}">
-                         </div>
-                     </div>
-                     % end
-                    <input class="btn btn-large btn-block btn-primary" type="submit" value="Run Simulation">
-                </form>
-            </div>
-            <div class="span6">
-                <div class="well">
-                    <p>{{!info['additional']}} </p>
-                </div>
-            </div>
-        </div>
-   </div>
-</body> 
-</html> 
- 
+        <script type="text/javascript" src="jquery.min.js"></script>
+        <script type="text/javascript" src="bootstrap.min.js"></script>
+        <script type="text/javascript" src="moment.min.js"></script>
+        <script type="text/javascript" src="simulate.js"></script>
+        <script type="text/javascript" src="sonic.js"></script>
+    </body>
+</html>

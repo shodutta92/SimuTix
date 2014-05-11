@@ -2,3 +2,7 @@
 *.swp
 *.swo
 test/*
+*.sublime-project
+*.sublime-workspace
+runs.txt
+data.dat

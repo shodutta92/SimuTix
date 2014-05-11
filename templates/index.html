@@ -2,31 +2,36 @@
 <html dir="ltr" lang="en-US"> 
 
 <head> 
-<!-- SigmaWeb By Sanketh Katta --> 
-	<meta charset="utf-8" /> 
-	<title>{{ info['team'] }}</title> 
+    <!-- SigmaWeb By Sanketh Katta --> 
+    <meta charset="utf-8" /> 
+    <title>{{ info['team'] }}</title> 
 
-	<!-- Stylesheets --> 
-	<link rel="stylesheet" type="text/css" href="bootstrap.min.css"/> 
-	<link rel="stylesheet" type="text/css" href="sigmaweb.css"/> 
+    <!-- Stylesheets --> 
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css"/> 
+    <link rel="stylesheet" type="text/css" href="sigmaweb.css"/> 
 
 </head> 
 
 <body> 
-    % include navbar data={"info": info, "__simulate": "", "__results": ""}
+    <!-- % include navbar data={"info": info, "__simulate": "", "__results": ""} -->
 
     <div class="container">
         <div class="row">
-            <div class="span12">
-                <div class="hero-unit">
-                <h1>Welcome to {{ info['team'] }}!</h1>
-                <p>{{!info['description']}}</p>
-                <p>By {{ info['members'] }}</p>
-                <p> <a href="/simulate" class="btn btn-primary btn-large">Let's Get Started</a> </p>
+            <div>
+                <div class="main-bannerText">
+                    <p><h1>{{ info['team'] }}</h1></p>
+                    <p>By {{ info['members'] }}</p>
+                    <div class="main-flow">
+                        <p>Arrive &#8594; Check in &#8594; Security &#8594; Gate &#8594; Board</p>
+                    </div>
+                    <p> 
+                        <a href="/simulate" class="btn btn-primary btn-lg main-button">Simulate</a>
+                        <a href="/results" class="btn btn-primary btn-lg main-button">Results</a> 
+                    </p>
                 </div>
             </div>
         </div>
-   </div>
+    </div>
 </body> 
 </html> 
- 
+
